@@ -1,12 +1,14 @@
 const Users = require('../models/users.models')
+const { matchedData } = require('express-validator')
+const handleErrors = require('../utils/handleErrors')
 
 const createUsers = async (req, res) => {
   try {
-    const { nombre, apellido, email, password } = req.body
-    const newUser = await Users.create({ nombre, apellido, email, password })
+    const body = matchedData(req)
+    const newUser = await Users.create(body)
     res.json(newUser)
   } catch (err) {
-    res.json({ error: 'Error al crear el usuario' })
+    handleErrors(res, 'ERROR AL CREAR EL USUARIO', 500)
   }
 }
 

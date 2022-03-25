@@ -7,6 +7,8 @@ const spare = new Schema(
     description: String,
     imageUrl: String,
     public_id: String,
+    price: Number,
+    count: Number,
   },
   { timestamps: true }
 )

@@ -11,7 +11,7 @@ cloudinary.config({
 
 const createSpare = async (req, res) => {
   try {
-    const { title, description } = req.body
+    const { title, description, count, price } = req.body
     const { url, public_id } = await cloudinary.v2.uploader.upload(
       req.file.path
     )
@@ -20,6 +20,8 @@ const createSpare = async (req, res) => {
       description,
       imageUrl: url,
       public_id,
+      count,
+      price,
     })
     await newSpare.save()
     await fs.unlink(req.file.path)

@@ -26,6 +26,7 @@ app.use(multer({ storage }).single('image'))
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/users', require('./routes/users.routes'))
 app.use('/api/spare', require('./routes/spare.routes'))
+app.use('/api/favorites', require('./routes/favorites.routes'))
 
 app.listen(port, () =>
   console.log(`Example app listening on port ${port}! ${process.env.NODE_ENV}`)
